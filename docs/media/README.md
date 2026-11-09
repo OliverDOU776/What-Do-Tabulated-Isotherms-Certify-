@@ -10,6 +10,10 @@ These MP4s show actual interactions with the [public isotherm certifier](https:/
 
 Certified answers are relative to IAST, the isotherm class, the tolerance and the Henry cap. They are not predictions for real mixtures. `../explorer/data/reference.json` holds values from the Python engine that `tests/test_explorer.mjs` compares with the browser engine.
 
+## Opening cartoon
+
+`hero.mp4` / `hero.gif` is the sixteen-second looping summary at the top of the project page and the README: flue gas meets a zeolite that keeps CO₂ and lets N₂ pass, two isotherm tables are measured up to 1 bar, fitted models disagree, IsoCert certifies an interval and names the measurement that settles the question. The drawing is schematic and was authored as a CSS-animated SVG by Gemini 4 Argon from a written brief (`scripts/hero_story.html`); every number in it is computed from the zeolite 13X records shown in the planning view. Render it again with `python scripts/render_hero.py` (headless Chromium, frame-accurate seeking, FFmpeg).
+
 ## Repeat the workflow
 
 From the repository root, serve the page with `python -m http.server 8000 --directory docs` and open `http://localhost:8000/explorer/`. Operate the controls listed above.

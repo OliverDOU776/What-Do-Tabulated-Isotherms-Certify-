@@ -20,3 +20,9 @@ for (const button of document.querySelectorAll('[data-copy]')) {
     }
   });
 }
+
+// The opening cartoon loops silently; visitors who prefer reduced motion get a paused video with controls.
+const teaser = document.getElementById('teaser-video');
+if (teaser && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  teaser.removeAttribute('autoplay'); teaser.pause(); teaser.controls = true;
+}

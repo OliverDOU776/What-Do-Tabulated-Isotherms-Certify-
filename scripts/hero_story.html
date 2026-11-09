@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>What Do Tabulated Isotherms Certify? — IsoCert</title>
+<style>
+  body{margin:0;background:#fff}
+  svg {
+    display: block;
+    background: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  /* Technical rule: every animated element uses 16s linear 0s infinite */
+  .anim {
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+  }
+
+  /* ================= SCENE VISIBILITY & PROGRESS DOTS ================= */
+  /* Scene 5 holds final state until 15.6s (97.5%), then fades to Scene 1 within last 0.4s (97.5%..100%) */
+  .scene1 { animation-name: kf-scene1; }
+  @keyframes kf-scene1 {
+    0%, 17.1875% { opacity: 1; }
+    19.0625%, 97.5% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  .scene2-5-base { animation-name: kf-scene2-5-base; }
+  @keyframes kf-scene2-5-base {
+    0%, 17.5% { opacity: 0; }
+    19.375%, 97.5% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  .scene2-only { animation-name: kf-scene2-only; }
+  @keyframes kf-scene2-only {
+    0%, 17.5% { opacity: 0; }
+    19.375%, 36.25% { opacity: 1; }
+    38.125%, 100% { opacity: 0; }
+  }
+
+  .scene3-5-base { animation-name: kf-scene3-5-base; }
+  @keyframes kf-scene3-5-base {
+    0%, 36.5625% { opacity: 0; }
+    38.4375%, 97.5% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  .scene3-only { animation-name: kf-scene3-only; }
+  @keyframes kf-scene3-only {
+    0%, 36.5625% { opacity: 0; }
+    38.4375%, 58.125% { opacity: 1; }
+    60%, 100% { opacity: 0; }
+  }
+
+  .scene4-only { animation-name: kf-scene4-only; }
+  @keyframes kf-scene4-only {
+    0%, 58.4375% { opacity: 0; }
+    60.3125%, 76.875% { opacity: 1; }
+    78.75%, 100% { opacity: 0; }
+  }
+
+  .scene5-only { animation-name: kf-scene5-only; }
+  @keyframes kf-scene5-only {
+    0%, 77.1875% { opacity: 0; }
+    79.0625%, 97.5% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  /* Progress dots at top right */
+  .pdot1 { animation-name: kf-scene1; }
+  .pdot2 { animation-name: kf-scene2-only; }
+  .pdot3 { animation-name: kf-scene3-only; }
+  .pdot4 { animation-name: kf-scene4-only; }
+  .pdot5 { animation-name: kf-scene5-only; }
+
+  /* ================= SCENE 1: MOLECULE MOTION ================= */
+  /* 5 CO2 molecules travel along pore-row lanes (y=215, 280, 345) from stack/plume into 5 distinct pores and stop.
+     In rows with 2 molecules (Row 1 and Row 3), the Col 3 (x=736) molecule starts well ahead of the Col 1 (x=568)
+     molecule so no molecule ever overlaps another in flight or at rest. */
+
+  /* Row 1, Col 1 pore (568, 215) */
+  .co2-m1 { animation-name: kf-co2-m1; }
+  @keyframes kf-co2-m1 {
+    0% { opacity: 1; transform: translate(220px, 210px); }
+    3.5% { opacity: 1; transform: translate(355px, 213px); }
+    7.0% { opacity: 1; transform: translate(485px, 215px); }
+    9.5% { opacity: 1; transform: translate(552px, 215px); }
+    10.8%, 19.2% { opacity: 1; transform: translate(568px, 215px); }
+    19.5%, 97.4% { opacity: 0; transform: translate(220px, 210px); }
+    97.5%, 100% { opacity: 1; transform: translate(220px, 210px); }
+  }
+
+  /* Row 2, Col 2 pore (652, 280) */
+  .co2-m2 { animation-name: kf-co2-m2; }
+  @keyframes kf-co2-m2 {
+    0% { opacity: 1; transform: translate(275px, 276px); }
+    3.5% { opacity: 1; transform: translate(425px, 279px); }
+    7.0% { opacity: 1; transform: translate(565px, 280px); }
+    9.2% { opacity: 1; transform: translate(636px, 280px); }
+    10.5%, 19.2% { opacity: 1; transform: translate(652px, 280px); }
+    19.5%, 97.4% { opacity: 0; transform: translate(275px, 276px); }
+    97.5%, 100% { opacity: 1; transform: translate(275px, 276px); }
+  }
+
+  /* Row 3, Col 1 pore (568, 345) */
+  .co2-m3 { animation-name: kf-co2-m3; }
+  @keyframes kf-co2-m3 {
+    0% { opacity: 1; transform: translate(225px, 338px); }
+    3.5% { opacity: 1; transform: translate(355px, 342px); }
+    7.0% { opacity: 1; transform: translate(480px, 345px); }
+    9.8% { opacity: 1; transform: translate(552px, 345px); }
+    11.0%, 19.2% { opacity: 1; transform: translate(568px, 345px); }
+    19.5%, 97.4% { opacity: 0; transform: translate(225px, 338px); }
+    97.5%, 100% { opacity: 1; transform: translate(225px, 338px); }
+  }
+
+  /* Row 1, Col 3 pore (736, 215) — starts ahead of co2-m1 */
+  .co2-m4 { animation-name: kf-co2-m4; }
+  @keyframes kf-co2-m4 {
+    0% { opacity: 1; transform: translate(365px, 215px); }
+    3.5% { opacity: 1; transform: translate(525px, 215px); }
+    6.8% { opacity: 1; transform: translate(670px, 215px); }
+    8.8% { opacity: 1; transform: translate(724px, 215px); }
+    10.0%, 19.2% { opacity: 1; transform: translate(736px, 215px); }
+    19.5%, 97.4% { opacity: 0; transform: translate(365px, 215px); }
+    97.5%, 100% { opacity: 1; transform: translate(365px, 215px); }
+  }
+
+  /* Row 3, Col 3 pore (736, 345) — starts ahead of co2-m3 */
+  .co2-m5 { animation-name: kf-co2-m5; }
+  @keyframes kf-co2-m5 {
+    0% { opacity: 1; transform: translate(375px, 345px); }
+    3.5% { opacity: 1; transform: translate(535px, 345px); }
+    6.8% { opacity: 1; transform: translate(675px, 345px); }
+    8.8% { opacity: 1; transform: translate(724px, 345px); }
+    10.0%, 19.2% { opacity: 1; transform: translate(736px, 345px); }
+    19.5%, 97.4% { opacity: 0; transform: translate(375px, 345px); }
+    97.5%, 100% { opacity: 1; transform: translate(375px, 345px); }
+  }
+
+  /* N2 molecules travel through the 3 horizontal crystal channels (y=184, 248, 314)
+     and exit on the right along or right next to the dashed arrow (y=238..258), far from all labels. */
+
+  /* Channel 1 (y=184) -> exits along dashed arrow (y=238) */
+  .n2-m1 { animation-name: kf-n2-m1; }
+  @keyframes kf-n2-m1 {
+    0% { opacity: 1; transform: translate(255px, 184px); }
+    5.5% { opacity: 1; transform: translate(535px, 184px); }
+    10.8% { opacity: 1; transform: translate(825px, 184px); }
+    12.5% { opacity: 1; transform: translate(895px, 238px); }
+    17.5% { opacity: 1; transform: translate(1155px, 238px); }
+    18.8%, 97.4% { opacity: 0; transform: translate(1205px, 238px); }
+    97.5%, 100% { opacity: 1; transform: translate(255px, 184px); }
+  }
+
+  /* Channel 2 (y=248) -> exits directly on dashed arrow (y=248) */
+  .n2-m2 { animation-name: kf-n2-m2; }
+  @keyframes kf-n2-m2 {
+    0% { opacity: 1; transform: translate(355px, 248px); }
+    5.5% { opacity: 1; transform: translate(655px, 248px); }
+    9.0% { opacity: 1; transform: translate(845px, 248px); }
+    15.0% { opacity: 1; transform: translate(1155px, 248px); }
+    16.5%, 97.4% { opacity: 0; transform: translate(1210px, 248px); }
+    97.5%, 100% { opacity: 1; transform: translate(355px, 248px); }
+  }
+
+  /* Channel 2 second wave (y=248) -> exits directly on dashed arrow (y=248) */
+  .n2-m3 { animation-name: kf-n2-m3; }
+  @keyframes kf-n2-m3 {
+    0% { opacity: 0; transform: translate(215px, 248px); }
+    1.5% { opacity: 1; transform: translate(240px, 248px); }
+    7.5% { opacity: 1; transform: translate(555px, 248px); }
+    13.0% { opacity: 1; transform: translate(845px, 248px); }
+    18.2% { opacity: 1; transform: translate(1115px, 248px); }
+    19.2%, 100% { opacity: 0; transform: translate(1155px, 248px); }
+  }
+
+  /* Channel 3 (y=314) -> exits along dashed arrow (y=258) */
+  .n2-m4 { animation-name: kf-n2-m4; }
+  @keyframes kf-n2-m4 {
+    0% { opacity: 1; transform: translate(295px, 314px); }
+    5.0% { opacity: 1; transform: translate(560px, 314px); }
+    10.0% { opacity: 1; transform: translate(825px, 314px); }
+    11.8% { opacity: 1; transform: translate(895px, 258px); }
+    17.0% { opacity: 1; transform: translate(1155px, 258px); }
+    18.5%, 97.4% { opacity: 0; transform: translate(1205px, 258px); }
+    97.5%, 100% { opacity: 1; transform: translate(295px, 314px); }
+  }
+
+  /* Channel 1 early leader (y=184) -> exits along dashed arrow (y=238) */
+  .n2-m5 { animation-name: kf-n2-m5; }
+  @keyframes kf-n2-m5 {
+    0% { opacity: 1; transform: translate(545px, 184px); }
+    5.0% { opacity: 1; transform: translate(825px, 184px); }
+    6.8% { opacity: 1; transform: translate(895px, 238px); }
+    12.5% { opacity: 1; transform: translate(1160px, 238px); }
+    14.0%, 97.4% { opacity: 0; transform: translate(1210px, 238px); }
+    97.5%, 100% { opacity: 1; transform: translate(545px, 184px); }
+  }
+
+  /* ================= SCENE 2: 7 DOTS APPEAR ONE BY ONE ================= */
+  .dot-1 { animation-name: kf-dot-1; }
+  @keyframes kf-dot-1 {
+    0%, 19.5% { opacity: 0; }
+    20.8%, 97.5% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .dot-2 { animation-name: kf-dot-2; }
+  @keyframes kf-dot-2 {
+    0%, 21.3% { opacity: 0; }
+    22.6%, 97.5% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .dot-3 { animation-name: kf-dot-3; }
+  @keyframes kf-dot-3 {
+    0%, 23.1% { opacity: 0; }
+    24.4%, 97.5% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .dot-4 { animation-name: kf-dot-4; }
+  @keyframes kf-dot-4 {
+    0%, 24.9% { opacity: 0; }
+    26.2%, 97.5% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .dot-5 { animation-name: kf-dot-5; }
+  @keyframes kf-dot-5 {
+    0%, 26.7% { opacity: 0; }
+    28.0%, 97.5% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .dot-6 { animation-name: kf-dot-6; }
+  @keyframes kf-dot-6 {
+    0%, 28.5% { opacity: 0; }
+    29.8%, 97.5% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .dot-7 { animation-name: kf-dot-7; }
+  @keyframes kf-dot-7 {
+    0%, 30.3% { opacity: 0; }
+    31.6%, 97.5% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  /* ================= SCENE 3: FAN OF RED CURVES & RED TICKS ================= */
+  /* Shaded region "the mixture calculation reads here" */
+  .shade-read { animation-name: kf-shade-read; }
+  @keyframes kf-shade-read {
+    0%, 37.5% { opacity: 0; }
+    39.5%, 77.5% { opacity: 1; }
+    80.5%, 97.5% { opacity: 0.35; }
+    100% { opacity: 0; }
+  }
+
+  /* Wide fan of red curves on N2 chart: appears in Scene 3, persists in Scene 4, collapses in Scene 5 */
+  .fan-wide {
+    transform-origin: 0px 0px;
+    animation-name: kf-fan-wide;
+  }
+  @keyframes kf-fan-wide {
+    0%, 38.2% { opacity: 0; transform: scaleY(1); }
+    41.0%, 80.5% { opacity: 1; transform: scaleY(1); }
+    82.5% { opacity: 0.75; transform: scaleY(0.55); }
+    84.5% { opacity: 0.25; transform: scaleY(0.18); }
+    85.8%, 100% { opacity: 0; transform: scaleY(0.08); }
+  }
+
+  /* Collapsed narrow red band in Scene 5 */
+  .fan-narrow { animation-name: kf-fan-narrow; }
+  @keyframes kf-fan-narrow {
+    0%, 81.5% { opacity: 0; }
+    85.0%, 97.5% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  /* Red tick marks on selectivity axis (217 to 2,018) */
+  .red-ticks { animation-name: kf-red-ticks; }
+  @keyframes kf-red-ticks {
+    0%, 40.0% { opacity: 0; }
+    43.0%, 58.5% { opacity: 1; }
+    61.0%, 77.5% { opacity: 0.32; }
+    79.5%, 100% { opacity: 0; }
+  }
+
+  .red-tick-labels { animation-name: kf-red-tick-labels; }
+  @keyframes kf-red-tick-labels {
+    0%, 40.5% { opacity: 0; }
+    43.5%, 58.125% { opacity: 1; }
+    60.0%, 100% { opacity: 0; }
+  }
+
+  /* Question mark badge "Is S >= 300?" */
+  .badge-q { animation-name: kf-badge-q; }
+  @keyframes kf-badge-q {
+    0%, 42.5% { opacity: 0; }
+    45.0%, 58.125% { opacity: 1; }
+    60.0%, 100% { opacity: 0; }
+  }
+
+  /* ================= SCENE 4: ISOCERT BAR (178 TO 15,497), AMBER BADGE, TEAL NOTE ================= */
+  /* Grey-blue bar grows from 178 (x=320) to 15,497 (x=941, width=621), then shrinks in Scene 5 to 421..2,810 (x=440..703, width=263) */
+  .bar-isocert-wide {
+    transform-box: fill-box;
+    transform-origin: left center;
+    animation-name: kf-bar-isocert-wide;
+  }
+  @keyframes kf-bar-isocert-wide {
+    0%, 59.0% { opacity: 0; transform: translateX(0px) scaleX(0.02); }
+    60.0% { opacity: 1; transform: translateX(0px) scaleX(0.18); }
+    61.5% { opacity: 1; transform: translateX(0px) scaleX(0.55); }
+    63.0% { opacity: 1; transform: translateX(0px) scaleX(0.86); }
+    64.5%, 81.25% { opacity: 1; transform: translateX(0px) scaleX(1); }
+    83.0% { opacity: 0.85; transform: translateX(48px) scaleX(0.75); }
+    84.75% { opacity: 0.45; transform: translateX(98px) scaleX(0.52); }
+    86.25%, 100% { opacity: 0; transform: translateX(120px) scaleX(0.42351); }
+  }
+
+  .s4-bar-labels { animation-name: kf-s4-bar-labels; }
+  @keyframes kf-s4-bar-labels {
+    0%, 62.5% { opacity: 0; }
+    64.8%, 77.5% { opacity: 1; }
+    79.5%, 100% { opacity: 0; }
+  }
+
+  .badge-undetermined { animation-name: kf-badge-undetermined; }
+  @keyframes kf-badge-undetermined {
+    0%, 63.0% { opacity: 0; }
+    65.2%, 77.2% { opacity: 1; }
+    79.0%, 100% { opacity: 0; }
+  }
+
+  .note-advice { animation-name: kf-note-advice; }
+  @keyframes kf-note-advice {
+    0%, 66.0% { opacity: 0; transform: translateY(8px); }
+    68.5%, 77.2% { opacity: 1; transform: translateY(0px); }
+    79.0%, 100% { opacity: 0; transform: translateY(0px); }
+  }
+
+  /* ================= SCENE 5: 4 NEW N2 DOTS (UP TO 10 BAR), STRONG BLUE BAR (421..2,810), GREEN BADGE ================= */
+  .new-dot-1 { animation-name: kf-new-dot-1; }
+  @keyframes kf-new-dot-1 {
+    0%, 78.5% { opacity: 0; }
+    79.6%, 97.5% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .new-dot-2 { animation-name: kf-new-dot-2; }
+  @keyframes kf-new-dot-2 {
+    0%, 79.5% { opacity: 0; }
+    80.6%, 97.5% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .new-dot-3 { animation-name: kf-new-dot-3; }
+  @keyframes kf-new-dot-3 {
+    0%, 80.5% { opacity: 0; }
+    81.6%, 97.5% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .new-dot-4 { animation-name: kf-new-dot-4; }
+  @keyframes kf-new-dot-4 {
+    0%, 81.5% { opacity: 0; }
+    82.6%, 97.5% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  /* Strong blue bar shrinks into 421 (x=440) to 2,810 (x=703), width=263, held fully visible until 15.6s (97.5%) */
+  .bar-isocert-strong {
+    transform-box: fill-box;
+    transform-origin: left center;
+    animation-name: kf-bar-isocert-strong;
+  }
+  @keyframes kf-bar-isocert-strong {
+    0%, 81.25% { opacity: 0; transform: translateX(-120px) scaleX(2.3612); }
+    83.0% { opacity: 0.45; transform: translateX(-72px) scaleX(1.7709); }
+    84.75% { opacity: 0.85; transform: translateX(-22px) scaleX(1.2278); }
+    86.25%, 97.5% { opacity: 1; transform: translateX(0px) scaleX(1); }
+    100% { opacity: 0; transform: translateX(0px) scaleX(1); }
+  }
+
+  .s5-bar-labels { animation-name: kf-s5-bar-labels; }
+  @keyframes kf-s5-bar-labels {
+    0%, 84.2% { opacity: 0; }
+    86.25%, 97.5% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  /* Green badge "YES, certain" held fully visible from 86.25% (13.80s) to 97.5% (15.60s) = 1.80s, then fades over last 0.4s */
+  .badge-yes { animation-name: kf-badge-yes; }
+  @keyframes kf-badge-yes {
+    0%, 84.2% { opacity: 0; }
+    86.25%, 97.5% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+</style>
+</head>
+<body>
+<svg viewBox="0 0 1280 640" width="1280" height="640" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Reusable CO2 molecule: 3 balls in a line (red O #c36464, dark grey C #465462, red O #c36464) -->
+    <g id="mol-co2">
+      <line x1="-16" y1="0" x2="16" y2="0" stroke="#30363d" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="-17" cy="0" r="9.5" fill="#c36464" stroke="#30363d" stroke-width="1.5"/>
+      <circle cx="-19.5" cy="-3" r="2.5" fill="#ffffff" opacity="0.45"/>
+      <circle cx="0" cy="0" r="10.5" fill="#465462" stroke="#30363d" stroke-width="1.5"/>
+      <circle cx="-2.5" cy="-3.5" r="2.5" fill="#ffffff" opacity="0.35"/>
+      <circle cx="17" cy="0" r="9.5" fill="#c36464" stroke="#30363d" stroke-width="1.5"/>
+      <circle cx="14.5" cy="-3" r="2.5" fill="#ffffff" opacity="0.45"/>
+    </g>
+
+    <!-- Reusable N2 molecule: 2 blue balls (#557aab) -->
+    <g id="mol-n2">
+      <circle cx="-8.5" cy="0" r="9.5" fill="#557aab" stroke="#30363d" stroke-width="1.5"/>
+      <circle cx="-11" cy="-3" r="2.5" fill="#ffffff" opacity="0.45"/>
+      <circle cx="8.5" cy="0" r="9.5" fill="#557aab" stroke="#30363d" stroke-width="1.5"/>
+      <circle cx="6" cy="-3" r="2.5" fill="#ffffff" opacity="0.45"/>
+    </g>
+
+    <!-- Reusable Zeolite Pore Cage Unit -->
+    <g id="pore-cage">
+      <rect x="-36" y="-22" width="72" height="44" rx="12" fill="#ffffff" stroke="#589e95" stroke-width="3.5"/>
+      <rect x="-30" y="-16" width="60" height="32" rx="9" fill="#eef7f6" stroke="#c1ddd8" stroke-width="2"/>
+    </g>
+  </defs>
+
+  <!-- ==================== PROGRESS DOTS (TOP RIGHT) ==================== -->
+  <g transform="translate(1135, 24)">
+    <circle cx="0" cy="0" r="6" fill="#dfe4e8"/>
+    <circle cx="24" cy="0" r="6" fill="#dfe4e8"/>
+    <circle cx="48" cy="0" r="6" fill="#dfe4e8"/>
+    <circle cx="72" cy="0" r="6" fill="#dfe4e8"/>
+    <circle cx="96" cy="0" r="6" fill="#dfe4e8"/>
+
+    <circle class="anim pdot1" cx="0" cy="0" r="6" fill="#2973ac"/>
+    <circle class="anim pdot2" cx="24" cy="0" r="6" fill="#2973ac"/>
+    <circle class="anim pdot3" cx="48" cy="0" r="6" fill="#2973ac"/>
+    <circle class="anim pdot4" cx="72" cy="0" r="6" fill="#2973ac"/>
+    <circle class="anim pdot5" cx="96" cy="0" r="6" fill="#2973ac"/>
+  </g>
+
+  <!-- ==================== SCENE 1 (0.0 - 3.0 s) ==================== -->
+  <g class="anim scene1">
+    <!-- Molecule Legend Pill (Top Left) -->
+    <g transform="translate(75, 42)">
+      <rect x="0" y="0" width="320" height="52" rx="12" fill="#f7f9fb" stroke="#dfe4e8" stroke-width="2"/>
+      <use href="#mol-co2" x="45" y="26"/>
+      <text x="82" y="34" font-size="24" font-weight="bold" fill="#30363d">CO₂</text>
+      <use href="#mol-n2" x="195" y="26"/>
+      <text x="225" y="34" font-size="24" font-weight="bold" fill="#30363d">N₂</text>
+    </g>
+
+    <!-- Soft Round Flue-Gas Puffs Ending Well Before the Crystal (no clipped edge anywhere) -->
+    <g id="flue-gas-puffs">
+      <circle cx="222" cy="172" r="26" fill="#dfe4e8" opacity="0.65"/>
+      <circle cx="258" cy="166" r="34" fill="#eef3f6" opacity="0.88"/>
+      <circle cx="304" cy="172" r="38" fill="#eef3f6" opacity="0.85"/>
+      <circle cx="352" cy="186" r="36" fill="#eef3f6" opacity="0.75"/>
+      <circle cx="255" cy="212" r="36" fill="#eef3f6" opacity="0.82"/>
+      <circle cx="308" cy="224" r="44" fill="#eef3f6" opacity="0.80"/>
+      <circle cx="358" cy="236" r="38" fill="#eef3f6" opacity="0.72"/>
+      <circle cx="275" cy="268" r="38" fill="#eef3f6" opacity="0.75"/>
+      <circle cx="328" cy="282" r="40" fill="#eef3f6" opacity="0.70"/>
+      <circle cx="370" cy="292" r="30" fill="#eef3f6" opacity="0.58"/>
+      <circle cx="298" cy="326" r="34" fill="#eef3f6" opacity="0.62"/>
+      <circle cx="344" cy="334" r="28" fill="#eef3f6" opacity="0.52"/>
+      <text x="304" y="122" font-size="24" font-weight="bold" fill="#67727d" text-anchor="middle">flue gas</text>
+    </g>
+
+    <!-- Factory & Smokestack on the Left -->
+    <g transform="translate(75, 165)">
+      <!-- Tall Smokestack -->
+      <polygon points="105,15 145,15 158,155 92,155" fill="#67727d" stroke="#30363d" stroke-width="3" stroke-linejoin="round"/>
+      <rect x="100" y="8" width="50" height="12" rx="4" fill="#465462" stroke="#30363d" stroke-width="2.5"/>
+      <rect x="103" y="32" width="44" height="10" fill="#c0564b"/>
+      <rect x="101" y="54" width="48" height="10" fill="#dfe4e8"/>
+      <!-- Factory Body with Sawtooth Roof -->
+      <polygon points="0,155 45,120 45,155 90,120 90,155 168,155 168,265 0,265" fill="#7fb0d8" stroke="#30363d" stroke-width="3" stroke-linejoin="round"/>
+      <rect x="0" y="155" width="168" height="110" rx="6" fill="#67727d" stroke="#30363d" stroke-width="3"/>
+      <!-- Factory Windows -->
+      <rect x="20" y="180" width="32" height="36" rx="4" fill="#fbf3df" stroke="#30363d" stroke-width="2"/>
+      <rect x="68" y="180" width="32" height="36" rx="4" fill="#fbf3df" stroke="#30363d" stroke-width="2"/>
+      <rect x="116" y="180" width="32" height="36" rx="4" fill="#fbf3df" stroke="#30363d" stroke-width="2"/>
+      <!-- Ground line under factory -->
+      <line x1="-15" y1="265" x2="185" y2="265" stroke="#30363d" stroke-width="4" stroke-linecap="round"/>
+    </g>
+
+    <!-- Porous Crystal Framework: Zeolite 13X (Friendly Honeycomb / Cage in Teal) -->
+    <g transform="translate(472, 128)">
+      <!-- Title above crystal -->
+      <text x="180" y="-18" font-size="28" font-weight="bold" fill="#30363d" text-anchor="middle">zeolite 13X</text>
+
+      <!-- Outer Crystal Rounded Frame -->
+      <rect x="0" y="0" width="360" height="275" rx="28" fill="#c1ddd8" stroke="#589e95" stroke-width="5"/>
+
+      <!-- Honeycomb Vertical Struts -->
+      <line x1="96" y1="0" x2="96" y2="275" stroke="#589e95" stroke-width="10"/>
+      <line x1="180" y1="0" x2="180" y2="275" stroke="#589e95" stroke-width="10"/>
+      <line x1="264" y1="0" x2="264" y2="275" stroke="#589e95" stroke-width="10"/>
+
+      <!-- Unobstructed Horizontal Flow Channels (at y_rel = 56, 120, 186 -> SVG y = 184, 248, 314) -->
+      <rect x="-4" y="44" width="368" height="24" fill="#ffffff" opacity="0.9"/>
+      <rect x="-4" y="108" width="368" height="24" fill="#ffffff" opacity="0.9"/>
+      <rect x="-4" y="174" width="368" height="24" fill="#ffffff" opacity="0.9"/>
+
+      <!-- 3x3 Grid of Porous Cages -->
+      <!-- Row 1 (y = 87 in crystal, y = 215 in SVG) -->
+      <use href="#pore-cage" x="96" y="87"/>
+      <use href="#pore-cage" x="180" y="87"/>
+      <use href="#pore-cage" x="264" y="87"/>
+      <!-- Row 2 (y = 152 in crystal, y = 280 in SVG) -->
+      <use href="#pore-cage" x="96" y="152"/>
+      <use href="#pore-cage" x="180" y="152"/>
+      <use href="#pore-cage" x="264" y="152"/>
+      <!-- Row 3 (y = 217 in crystal, y = 345 in SVG) -->
+      <use href="#pore-cage" x="96" y="217"/>
+      <use href="#pore-cage" x="180" y="217"/>
+      <use href="#pore-cage" x="264" y="217"/>
+
+      <!-- Small label under the crystal: "CO2/N2 selectivity S" -->
+      <rect x="35" y="294" width="290" height="46" rx="12" fill="#eef3f6" stroke="#2973ac" stroke-width="2.5"/>
+      <text x="180" y="325" font-size="25" font-weight="bold" fill="#2973ac" text-anchor="middle">CO₂/N₂ selectivity S</text>
+    </g>
+
+    <!-- Right-side Exit Stream Annotation (Labels placed completely clear of all molecule paths) -->
+    <g id="exit-annotations">
+      <!-- Dashed arrow at y = 248 -->
+      <path d="M 865 248 L 1150 248" stroke="#557aab" stroke-width="3" stroke-dasharray="8,6"/>
+      <polygon points="1150,240 1168,248 1150,256" fill="#557aab"/>
+      <!-- "N2 passes through" clearly above the dashed arrow and above all exiting N2 paths -->
+      <text x="1025" y="192" font-size="24" font-weight="bold" fill="#557aab" text-anchor="middle">N₂ passes through</text>
+      <!-- "CO2 stays in pores" to the lower right of the crystal, well below every molecule path -->
+      <line x1="782" y1="352" x2="868" y2="378" stroke="#c0564b" stroke-width="2.5" stroke-dasharray="5,4"/>
+      <text x="985" y="388" font-size="24" font-weight="bold" fill="#c0564b" text-anchor="middle">CO₂ stays in pores</text>
+    </g>
+
+    <!-- Animated CO2 Molecules (Drifting right from stack/plume into distinct pores and stopping) -->
+    <g class="anim co2-m1"><use href="#mol-co2"/></g>
+    <g class="anim co2-m2"><use href="#mol-co2"/></g>
+    <g class="anim co2-m3"><use href="#mol-co2"/></g>
+    <g class="anim co2-m4"><use href="#mol-co2"/></g>
+    <g class="anim co2-m5"><use href="#mol-co2"/></g>
+
+    <!-- Animated N2 Molecules (Drifting right through crystal channels and exiting along dashed arrow) -->
+    <g class="anim n2-m1"><use href="#mol-n2"/></g>
+    <g class="anim n2-m2"><use href="#mol-n2"/></g>
+    <g class="anim n2-m3"><use href="#mol-n2"/></g>
+    <g class="anim n2-m4"><use href="#mol-n2"/></g>
+    <g class="anim n2-m5"><use href="#mol-n2"/></g>
+  </g>
+
+  <!-- ==================== PERSISTENT CHARTS FOR SCENES 2 - 5 (3.0 - 16.0 s) ==================== -->
+  <g class="anim scene2-5-base">
+
+    <!-- ==================== LEFT CHART: CO2 LOADING ==================== -->
+    <g id="chart-co2">
+      <!-- Plot Background & Grid -->
+      <rect x="105" y="66" width="445" height="202" rx="4" fill="#fafbfc" stroke="#dfe4e8" stroke-width="1.5"/>
+      <line x1="105" y1="116" x2="550" y2="116" stroke="#dfe4e8" stroke-width="1.5"/>
+      <line x1="105" y1="167" x2="550" y2="167" stroke="#dfe4e8" stroke-width="1.5"/>
+      <line x1="105" y1="217" x2="550" y2="217" stroke="#dfe4e8" stroke-width="1.5"/>
+
+      <!-- Chart Title -->
+      <text x="328" y="48" font-size="26" font-weight="bold" fill="#30363d" text-anchor="middle">CO₂ loading</text>
+
+      <!-- 1 bar Dashed Vertical Line -->
+      <line x1="435" y1="66" x2="435" y2="268" stroke="#67727d" stroke-width="2.5" stroke-dasharray="7,5"/>
+      <text x="435" y="298" font-size="22" font-weight="bold" fill="#30363d" text-anchor="middle">1 bar</text>
+
+      <!-- Axes -->
+      <line x1="105" y1="66" x2="105" y2="268" stroke="#30363d" stroke-width="3" stroke-linecap="round"/>
+      <line x1="105" y1="268" x2="550" y2="268" stroke="#30363d" stroke-width="3" stroke-linecap="round"/>
+      <text x="270" y="302" font-size="22" fill="#67727d" text-anchor="middle">Pressure</text>
+
+      <!-- Fitted CO2 Curve (Appears in Scene 3 and persists) -->
+      <path class="anim scene3-5-base" d="M 118 256 C 145 162, 215 112, 435 88" fill="none" stroke="#c0564b" stroke-width="3.5" stroke-linecap="round"/>
+
+      <!-- 7 Black Dots on CO2 Chart (Rise steeply and bend, ending at 1 bar x=435) -->
+      <circle class="anim dot-1" cx="122" cy="242" r="6.5" fill="#30363d"/>
+      <circle class="anim dot-2" cx="148" cy="188" r="6.5" fill="#30363d"/>
+      <circle class="anim dot-3" cx="188" cy="148" r="6.5" fill="#30363d"/>
+      <circle class="anim dot-4" cx="240" cy="122" r="6.5" fill="#30363d"/>
+      <circle class="anim dot-5" cx="302" cy="105" r="6.5" fill="#30363d"/>
+      <circle class="anim dot-6" cx="368" cy="95" r="6.5" fill="#30363d"/>
+      <circle class="anim dot-7" cx="435" cy="88" r="6.5" fill="#30363d"/>
+    </g>
+
+    <!-- ==================== RIGHT CHART: N2 LOADING ==================== -->
+    <g id="chart-n2">
+      <!-- Plot Background & Grid -->
+      <rect x="655" y="66" width="555" height="202" rx="4" fill="#fafbfc" stroke="#dfe4e8" stroke-width="1.5"/>
+      <line x1="655" y1="116" x2="1210" y2="116" stroke="#dfe4e8" stroke-width="1.5"/>
+      <line x1="655" y1="167" x2="1210" y2="167" stroke="#dfe4e8" stroke-width="1.5"/>
+      <line x1="655" y1="217" x2="1210" y2="217" stroke="#dfe4e8" stroke-width="1.5"/>
+
+      <!-- Shaded Region to the Right of 1-bar Line (Scenes 3-5) -->
+      <g class="anim shade-read">
+        <rect x="850" y="68" width="358" height="198" fill="#fbf3df"/>
+        <text x="1005" y="94" font-size="22" font-weight="bold" fill="#b7791f" text-anchor="middle">the mixture calculation</text>
+        <text x="1005" y="120" font-size="22" font-weight="bold" fill="#b7791f" text-anchor="middle">reads here</text>
+      </g>
+
+      <!-- Chart Title -->
+      <text x="932" y="48" font-size="26" font-weight="bold" fill="#30363d" text-anchor="middle">N₂ loading</text>
+
+      <!-- 1 bar Dashed Vertical Line -->
+      <line x1="850" y1="66" x2="850" y2="268" stroke="#67727d" stroke-width="2.5" stroke-dasharray="7,5"/>
+      <text x="850" y="298" font-size="22" font-weight="bold" fill="#30363d" text-anchor="middle">1 bar</text>
+
+      <!-- Axes -->
+      <line x1="655" y1="66" x2="655" y2="268" stroke="#30363d" stroke-width="3" stroke-linecap="round"/>
+      <line x1="655" y1="268" x2="1210" y2="268" stroke="#30363d" stroke-width="3" stroke-linecap="round"/>
+      <text x="748" y="302" font-size="22" fill="#67727d" text-anchor="middle">Pressure</text>
+
+      <!-- Shared Red Curve Passing Through All 7 Dots up to 1 bar (x=670..850) -->
+      <path class="anim scene3-5-base" d="M 670 258 L 850 222" fill="none" stroke="#c0564b" stroke-width="3.5" stroke-linecap="round"/>
+
+      <!-- Fanning Red Curves to the Right of 1 bar (Rotated along true trajectory so scaleY pinches directly onto the 4 new dots) -->
+      <g transform="translate(850, 222) rotate(-13.43)">
+        <!-- Wide Fan (Scene 3 & 4, collapses in Scene 5) -->
+        <g class="anim fan-wide">
+          <!-- Shaded fan envelope -->
+          <path d="M 0 0 C 110 -2, 220 -26, 344 -48 L 344 78 C 220 46, 110 14, 0 0 Z" fill="#c0564b" opacity="0.16"/>
+          <!-- 6 Red Model Curves Fanning Widely -->
+          <path d="M 0 0 C 110 -2, 220 -26, 344 -48" fill="none" stroke="#c0564b" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M 0 0 C 110 -1, 220 -14, 344 -24" fill="none" stroke="#c0564b" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M 0 0 C 110 0, 220 -3, 344 0" fill="none" stroke="#c0564b" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M 0 0 C 110 4, 220 14, 344 26" fill="none" stroke="#c0564b" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M 0 0 C 110 9, 220 30, 344 52" fill="none" stroke="#c0564b" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M 0 0 C 110 14, 220 46, 344 78" fill="none" stroke="#c0564b" stroke-width="2.8" stroke-linecap="round"/>
+        </g>
+
+        <!-- Narrow Collapsed Band Passing Through the 4 New Dots (Scene 5) -->
+        <g class="anim fan-narrow">
+          <path d="M 0 0 C 115 -3, 230 -6, 344 -8 L 344 8 C 230 4, 115 2, 0 0 Z" fill="#c0564b" opacity="0.32"/>
+          <path d="M 0 0 C 115 -3, 230 -6, 344 -8" fill="none" stroke="#c0564b" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M 0 0 C 115 -1, 230 -1, 344 0" fill="none" stroke="#2973ac" stroke-width="3" stroke-linecap="round"/>
+          <path d="M 0 0 C 115 2, 230 4, 344 8" fill="none" stroke="#c0564b" stroke-width="2.8" stroke-linecap="round"/>
+        </g>
+      </g>
+
+      <!-- 7 Black Dots on N2 Chart up to 1 bar (Low and almost straight) -->
+      <circle class="anim dot-1" cx="670" cy="258" r="6.5" fill="#30363d"/>
+      <circle class="anim dot-2" cx="700" cy="252" r="6.5" fill="#30363d"/>
+      <circle class="anim dot-3" cx="730" cy="246" r="6.5" fill="#30363d"/>
+      <circle class="anim dot-4" cx="760" cy="240" r="6.5" fill="#30363d"/>
+      <circle class="anim dot-5" cx="790" cy="234" r="6.5" fill="#30363d"/>
+      <circle class="anim dot-6" cx="820" cy="228" r="6.5" fill="#30363d"/>
+      <circle class="anim dot-7" cx="850" cy="222" r="6.5" fill="#30363d"/>
+
+      <!-- 4 New Black Dots on N2 Chart above 1 bar up to 10 bar (Scene 5) -->
+      <circle class="anim new-dot-1" cx="934" cy="199" r="7" fill="#30363d" stroke="#ffffff" stroke-width="1.5"/>
+      <circle class="anim new-dot-2" cx="1018" cy="178" r="7" fill="#30363d" stroke="#ffffff" stroke-width="1.5"/>
+      <circle class="anim new-dot-3" cx="1102" cy="159" r="7" fill="#30363d" stroke="#ffffff" stroke-width="1.5"/>
+      <g class="anim new-dot-4">
+        <line x1="1185" y1="68" x2="1185" y2="268" stroke="#2973ac" stroke-width="2" stroke-dasharray="5,5"/>
+        <circle cx="1185" cy="142" r="7" fill="#30363d" stroke="#ffffff" stroke-width="1.5"/>
+        <text x="1185" y="298" font-size="22" font-weight="bold" fill="#2973ac" text-anchor="middle">10 bar</text>
+      </g>
+    </g>
+
+    <!-- ==================== SCENE 2 LOWER SUMMARY CARD ==================== -->
+    <g class="anim scene2-only" transform="translate(220, 385)">
+      <rect x="0" y="0" width="840" height="86" rx="14" fill="#f7f9fb" stroke="#dfe4e8" stroke-width="2.5"/>
+      <text x="420" y="38" font-size="24" font-weight="bold" fill="#30363d" text-anchor="middle">Two small tables per material: one for each gas.</text>
+      <text x="420" y="68" font-size="22" fill="#67727d" text-anchor="middle">Engineers fit a curve to each table to compute the mixture.</text>
+    </g>
+
+    <!-- ==================== SELECTIVITY AXIS (SCENES 3 - 5) ==================== -->
+    <!-- Log-scale rule: 100 at x=240, 1,000 at x=560, 10,000 at x=880 (x = 240 + 320*log10(S/100)) -->
+    <!-- Exact positions: 178->320, 217->348, 300->393, 421->440, 2,018->657, 2,810->703, 15,497->941 -->
+    <g class="anim scene3-5-base">
+      <!-- Axis Title on Left -->
+      <text x="118" y="446" font-size="24" font-weight="bold" fill="#30363d" text-anchor="middle">Selectivity S</text>
+      <text x="118" y="474" font-size="22" fill="#67727d" text-anchor="middle">(log scale)</text>
+
+      <!-- Main Horizontal Axis Line -->
+      <line x1="215" y1="452" x2="960" y2="452" stroke="#30363d" stroke-width="3.5" stroke-linecap="round"/>
+
+      <!-- Major Log-Scale Ticks: 100 (x=240), 1,000 (x=560), 10,000 (x=880) -->
+      <line x1="240" y1="442" x2="240" y2="466" stroke="#30363d" stroke-width="3"/>
+      <text x="240" y="496" font-size="23" font-weight="bold" fill="#67727d" text-anchor="middle">100</text>
+
+      <line x1="560" y1="442" x2="560" y2="466" stroke="#30363d" stroke-width="3"/>
+      <text x="560" y="496" font-size="23" font-weight="bold" fill="#67727d" text-anchor="middle">1,000</text>
+
+      <line x1="880" y1="442" x2="880" y2="466" stroke="#30363d" stroke-width="3"/>
+      <text x="880" y="496" font-size="23" font-weight="bold" fill="#67727d" text-anchor="middle">10,000</text>
+
+      <!-- Scene 4 & 5 IsoCert Bars -->
+      <!-- Scene 4 Wide Grey-Blue Bar: 178 (x=320) to 15,497 (x=941) -> width = 621 -->
+      <rect class="anim bar-isocert-wide" x="320" y="436" width="621" height="32" rx="6" fill="#7fb0d8" stroke="#2973ac" stroke-width="2"/>
+      <!-- Scene 5 Strong Blue Bar: 421 (x=440) to 2,810 (x=703) -> width = 263 -->
+      <rect class="anim bar-isocert-strong" x="440" y="436" width="263" height="32" rx="6" fill="#2973ac" stroke="#1d5684" stroke-width="2"/>
+
+      <!-- Scene 3: Red Tick Marks (217 at x=348 to 2,018 at x=657; 3 ticks left of 300, several right of 300) -->
+      <g class="anim red-ticks" stroke="#c0564b" stroke-width="3.2" stroke-linecap="round">
+        <!-- 3 ticks LEFT of target (x=393): near 217-260 -->
+        <line x1="348" y1="432" x2="348" y2="472"/>
+        <line x1="361" y1="435" x2="361" y2="469"/>
+        <line x1="374" y1="435" x2="374" y2="469"/>
+        <!-- Several (14) ticks RIGHT of target (x=393) up to 2,018 (x=657) -->
+        <line x1="412" y1="435" x2="412" y2="469"/>
+        <line x1="428" y1="435" x2="428" y2="469"/>
+        <line x1="446" y1="435" x2="446" y2="469"/>
+        <line x1="463" y1="435" x2="463" y2="469"/>
+        <line x1="482" y1="435" x2="482" y2="469"/>
+        <line x1="499" y1="435" x2="499" y2="469"/>
+        <line x1="518" y1="435" x2="518" y2="469"/>
+        <line x1="538" y1="435" x2="538" y2="469"/>
+        <line x1="556" y1="435" x2="556" y2="469"/>
+        <line x1="578" y1="435" x2="578" y2="469"/>
+        <line x1="598" y1="435" x2="598" y2="469"/>
+        <line x1="619" y1="435" x2="619" y2="469"/>
+        <line x1="638" y1="435" x2="638" y2="469"/>
+        <line x1="657" y1="432" x2="657" y2="472"/>
+      </g>
+
+      <!-- Scene 3 Endpoint Callout Labels for Red Ticks (217 and 2,018) -->
+      <g class="anim red-tick-labels">
+        <text x="348" y="422" font-size="22" font-weight="bold" fill="#c0564b" text-anchor="middle">217</text>
+        <text x="657" y="422" font-size="22" font-weight="bold" fill="#c0564b" text-anchor="middle">2,018</text>
+      </g>
+
+      <!-- Scene 4 Endpoint Callout Labels for Wide Bar (178 and 15,497) -->
+      <g class="anim s4-bar-labels">
+        <text x="320" y="424" font-size="22" font-weight="bold" fill="#2973ac" text-anchor="middle">178</text>
+        <text x="941" y="424" font-size="22" font-weight="bold" fill="#2973ac" text-anchor="middle">15,497</text>
+      </g>
+
+      <!-- Scene 5 Endpoint Callout Labels for Narrow Strong Blue Bar (421 and 2,810) -->
+      <g class="anim s5-bar-labels">
+        <text x="440" y="424" font-size="23" font-weight="bold" fill="#2973ac" text-anchor="middle">421</text>
+        <text x="703" y="424" font-size="23" font-weight="bold" fill="#2973ac" text-anchor="middle">2,810</text>
+      </g>
+
+      <!-- Dashed Target Marker at S = 300 (x = 393) - Drawn on top of bars so crossing is unmistakable -->
+      <line x1="393" y1="382" x2="393" y2="476" stroke="#30363d" stroke-width="3" stroke-dasharray="6,5"/>
+      <rect x="303" y="346" width="180" height="34" rx="8" fill="#eef3f6" stroke="#30363d" stroke-width="1.8"/>
+      <text x="393" y="371" font-size="23" font-weight="bold" fill="#30363d" text-anchor="middle">target: S ≥ 300</text>
+    </g>
+
+    <!-- ==================== BADGES & ADVICE NOTE (SCENES 3, 4, 5) ==================== -->
+
+    <!-- Scene 3 Question Mark Badge: "Is S >= 300?" -->
+    <g class="anim badge-q" transform="translate(990, 416)">
+      <rect x="0" y="0" width="255" height="64" rx="14" fill="#fbf3df" stroke="#b7791f" stroke-width="2.5"/>
+      <circle cx="36" cy="32" r="18" fill="#b7791f"/>
+      <text x="36" y="40" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">?</text>
+      <text x="148" y="41" font-size="26" font-weight="bold" fill="#b7791f" text-anchor="middle">Is S ≥ 300?</text>
+    </g>
+
+    <!-- Scene 4 Amber Badge: "UNDETERMINED" -->
+    <g class="anim badge-undetermined" transform="translate(990, 416)">
+      <rect x="0" y="0" width="255" height="64" rx="14" fill="#fbf3df" stroke="#b7791f" stroke-width="2.5"/>
+      <text x="127.5" y="41" font-size="25" font-weight="bold" fill="#b7791f" text-anchor="middle">UNDETERMINED</text>
+    </g>
+
+    <!-- Scene 4 Teal Advice Note with Arrow Pointing to N2 Chart (>1 bar region) -->
+    <g class="anim note-advice">
+      <rect x="880" y="316" width="365" height="54" rx="12" fill="#e3f1ee" stroke="#589e95" stroke-width="2.5"/>
+      <text x="1062.5" y="351" font-size="23" font-weight="bold" fill="#187f79" text-anchor="middle">Advice: measure N₂ above 1 bar</text>
+      <!-- Arrow pointing straight up into the N2 chart (>1 bar region) -->
+      <line x1="1050" y1="316" x2="1050" y2="252" stroke="#187f79" stroke-width="3.5"/>
+      <polygon points="1042,256 1050,238 1058,256" fill="#187f79"/>
+    </g>
+
+    <!-- Scene 5 Green Badge with Check Mark: "YES, certain" -->
+    <g class="anim badge-yes" transform="translate(990, 416)">
+      <rect x="0" y="0" width="255" height="64" rx="14" fill="#e3f1ee" stroke="#187f79" stroke-width="2.5"/>
+      <circle cx="36" cy="32" r="18" fill="#187f79"/>
+      <path d="M 27 32 L 33 39 L 45 25" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="148" y="41" font-size="26" font-weight="bold" fill="#187f79" text-anchor="middle">YES, certain</text>
+    </g>
+
+  </g>
+
+  <!-- ==================== CAPTION BAND AT BOTTOM (y = 550..640, height = 90 px) ==================== -->
+  <rect x="0" y="550" width="1280" height="90" fill="#eef3f6"/>
+  <line x1="0" y1="550" x2="1280" y2="550" stroke="#dfe4e8" stroke-width="2"/>
+
+  <!-- Scene 1 Caption -->
+  <text class="anim scene1" x="640" y="605" font-size="30" font-weight="bold" fill="#293d49" text-anchor="middle">
+    Carbon capture needs an adsorbent that takes CO₂ and lets N₂ pass.
+  </text>
+
+  <!-- Scene 2 Caption -->
+  <text class="anim scene2-only" x="640" y="605" font-size="30" font-weight="bold" fill="#293d49" text-anchor="middle">
+    The lab measures each gas alone, up to 1 bar.
+  </text>
+
+  <!-- Scene 3 Caption -->
+  <text class="anim scene3-only" x="640" y="605" font-size="30" font-weight="bold" fill="#293d49" text-anchor="middle">
+    24 model pairs fit both tables. Their answers: S = 217 to 2,018.
+  </text>
+
+  <!-- Scene 4 Caption -->
+  <text class="anim scene4-only" x="640" y="605" font-size="30" font-weight="bold" fill="#293d49" text-anchor="middle">
+    IsoCert: every curve the tables allow gives S = 178 to 15,497.
+  </text>
+
+  <!-- Scene 5 Caption -->
+  <text class="anim scene5-only" x="640" y="605" font-size="30" font-weight="bold" fill="#293d49" text-anchor="middle">
+    Add the N₂ points up to 10 bar: S = 421 to 2,810. A certain YES.
+  </text>
+</svg>
+</body>
+</html>

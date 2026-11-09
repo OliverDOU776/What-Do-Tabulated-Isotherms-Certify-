@@ -590,3 +590,11 @@ h1 .subtitle { display: inline-block; margin-top: 8px; font-size: .62em; font-we
 .code-label.second { margin-top: 18px; }
 .implementation p code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: .92em; background: #f3f5f6; padding: 1px 5px; border-radius: 3px; }
 @media(max-width:600px) { h1 .subtitle { font-size: .66em; } .opening-result { font-size: 14px; } .opening-result strong { font-size: 18px; } .chemistry { overflow-x: auto; margin-left: 0; margin-right: 0; } .chemistry img { min-width: 660px; } }
+
+/* Opening teaser: a short looping cartoon, as on video-first project pages. */
+.teaser { max-width: 1000px; margin: 14px auto 18px; }
+.teaser video { aspect-ratio: 2 / 1; border: 1px solid #dce3e8; border-radius: 6px; background: #fff; }
+.teaser video img { width: 100%; height: auto; display: block; }
+.teaser figcaption { font-size: 13px; color: #67747d; margin-top: 9px; max-width: 900px; }
+#example img { border: 0; }
+@media(max-width:600px) { .teaser { margin: 10px -6px 16px; } .teaser figcaption { font-size: 11.5px; text-align: center; } #example { overflow-x: auto; } #example img { min-width: 660px; } }
