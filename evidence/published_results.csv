@@ -1,0 +1,232 @@
+table,section,row,quantity,value
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Best-fit model (point),"rho in (1,2] coverage_percent",62.3
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Best-fit model (point),"rho in (2,5] coverage_percent",19.5
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Best-fit model (point),"rho in (5,10] coverage_percent",6.9
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Best-fit model (point),"rho in (1,10] coverage_percent",19.6
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Six-family ensemble,"rho in (1,2] coverage_percent",80.1
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Six-family ensemble,"rho in (1,2] median_band_ratio",1.05
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Six-family ensemble,"rho in (2,5] coverage_percent",61.6
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Six-family ensemble,"rho in (2,5] median_band_ratio",1.20
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Six-family ensemble,"rho in (5,10] coverage_percent",58.8
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Six-family ensemble,"rho in (5,10] median_band_ratio",1.57
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Six-family ensemble,"rho in (1,10] coverage_percent",63.0
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Six-family ensemble,"rho in (1,10] median_band_ratio",1.24
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Dual-site parameter set,"rho in (1,2] coverage_percent",97.4
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Dual-site parameter set,"rho in (1,2] median_band_ratio",1.27
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Dual-site parameter set,"rho in (2,5] coverage_percent",95.6
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Dual-site parameter set,"rho in (2,5] median_band_ratio",1.97
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Dual-site parameter set,"rho in (5,10] coverage_percent",94.5
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Dual-site parameter set,"rho in (5,10] median_band_ratio",3.61
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Dual-site parameter set,"rho in (1,10] coverage_percent",95.3
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Dual-site parameter set,"rho in (1,10] median_band_ratio",2.43
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Hinge class (shape only),"rho in (1,2] coverage_percent",99.0
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Hinge class (shape only),"rho in (1,2] median_band_ratio",1.51
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Hinge class (shape only),"rho in (2,5] coverage_percent",98.6
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Hinge class (shape only),"rho in (2,5] median_band_ratio",3.11
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Hinge class (shape only),"rho in (5,10] coverage_percent",99.1
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Hinge class (shape only),"rho in (5,10] median_band_ratio",6.85
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Hinge class (shape only),"rho in (1,10] coverage_percent",98.9
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Hinge class (shape only),"rho in (1,10] median_band_ratio",4.29
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Langmuir class,"rho in (1,2] coverage_percent",98.3
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Langmuir class,"rho in (1,2] median_band_ratio",1.27
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Langmuir class,"rho in (2,5] coverage_percent",97.3
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Langmuir class,"rho in (2,5] median_band_ratio",2.00
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Langmuir class,"rho in (5,10] coverage_percent",96.5
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Langmuir class,"rho in (5,10] median_band_ratio",3.68
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Langmuir class,"rho in (1,10] coverage_percent",97.0
+Table II: held-out extrapolation,"records with P_max <= 10 bar (607 test records, 12,402 hidden points)",Langmuir class,"rho in (1,10] median_band_ratio",2.51
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Dual-site parameter set,"rho in (1,2] coverage_percent",95.2
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Dual-site parameter set,"rho in (1,2] median_band_ratio",1.19
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Dual-site parameter set,"rho in (2,5] coverage_percent",80.2
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Dual-site parameter set,"rho in (2,5] median_band_ratio",1.72
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Dual-site parameter set,"rho in (5,10] coverage_percent",78.9
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Dual-site parameter set,"rho in (5,10] median_band_ratio",3.04
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Dual-site parameter set,"rho in (1,10] coverage_percent",82.0
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Dual-site parameter set,"rho in (1,10] median_band_ratio",2.05
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Hinge class (shape only),"rho in (1,2] coverage_percent",98.6
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Hinge class (shape only),"rho in (1,2] median_band_ratio",1.43
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Hinge class (shape only),"rho in (2,5] coverage_percent",99.0
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Hinge class (shape only),"rho in (2,5] median_band_ratio",2.84
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Hinge class (shape only),"rho in (5,10] coverage_percent",98.4
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Hinge class (shape only),"rho in (5,10] median_band_ratio",6.00
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Hinge class (shape only),"rho in (1,10] coverage_percent",98.6
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Hinge class (shape only),"rho in (1,10] median_band_ratio",3.53
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Langmuir class,"rho in (1,2] coverage_percent",96.0
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Langmuir class,"rho in (1,2] median_band_ratio",1.20
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Langmuir class,"rho in (2,5] coverage_percent",81.8
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Langmuir class,"rho in (2,5] median_band_ratio",1.76
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Langmuir class,"rho in (5,10] coverage_percent",82.0
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Langmuir class,"rho in (5,10] median_band_ratio",3.13
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Langmuir class,"rho in (1,10] coverage_percent",84.2
+Table II: held-out extrapolation,"records with P_max > 10 bar (464 records, 7,512 hidden points)",Langmuir class,"rho in (1,10] median_band_ratio",2.14
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Langmuir,n,154
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Langmuir,ensemble_truth_excluded,50.0
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Langmuir,ensemble_truth_included,68.2
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Langmuir,resampling_linear_tail,80.5
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Langmuir,dual_site_parameter_set,100.0
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Langmuir,hinge_class,100.0
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Langmuir,langmuir_class_all,100.0
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Langmuir,langmuir_class_cap_holds (in-cap count),100.0 (154)
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Dual-site Langmuir,n,225
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Dual-site Langmuir,ensemble_truth_excluded,29.8
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Dual-site Langmuir,ensemble_truth_included,59.1
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Dual-site Langmuir,resampling_linear_tail,61.8
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Dual-site Langmuir,dual_site_parameter_set,83.1
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Dual-site Langmuir,hinge_class,88.0
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Dual-site Langmuir,langmuir_class_all,84.0
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Dual-site Langmuir,langmuir_class_cap_holds (in-cap count),100.0 (166)
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Toth,n,210
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Toth,ensemble_truth_excluded,83.8
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Toth,ensemble_truth_included,87.1
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Toth,resampling_linear_tail,69.0
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Toth,dual_site_parameter_set,90.5
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Toth,hinge_class,98.6
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Toth,langmuir_class_all,98.1
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Toth,langmuir_class_cap_holds (in-cap count),100.0 (164)
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,UNILAN,n,190
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,UNILAN,ensemble_truth_excluded,83.2
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,UNILAN,ensemble_truth_included,86.8
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,UNILAN,resampling_linear_tail,75.3
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,UNILAN,dual_site_parameter_set,95.3
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,UNILAN,hinge_class,98.9
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,UNILAN,langmuir_class_all,98.9
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,UNILAN,langmuir_class_cap_holds (in-cap count),100.0 (186)
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Sips,n,211
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Sips,ensemble_truth_excluded,48.3
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Sips,ensemble_truth_included,81.5
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Sips,resampling_linear_tail,62.1
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Sips,dual_site_parameter_set,86.7
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Sips,hinge_class,97.6
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Sips,langmuir_class_all,96.7
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,Sips,langmuir_class_cap_holds (in-cap count),--
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,All,n,990
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,All,ensemble_truth_excluded,58.6
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,All,ensemble_truth_included,76.6
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,All,resampling_linear_tail,68.9
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,All,dual_site_parameter_set,90.4
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,All,hinge_class,96.3
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,All,langmuir_class_all,95.1
+"Table III: known truth (kappa = 10, P = 1 bar)",coverage_percent,All,langmuir_class_cap_holds (in-cap count),100.0 (670)
+"Table III: known truth (kappa = 10, P = 1 bar)",median_width_lnS,Median width of \ln S,ensemble_truth_excluded,0.09
+"Table III: known truth (kappa = 10, P = 1 bar)",median_width_lnS,Median width of \ln S,ensemble_truth_included,0.11
+"Table III: known truth (kappa = 10, P = 1 bar)",median_width_lnS,Median width of \ln S,resampling_linear_tail,0.30
+"Table III: known truth (kappa = 10, P = 1 bar)",median_width_lnS,Median width of \ln S,dual_site_parameter_set,0.54
+"Table III: known truth (kappa = 10, P = 1 bar)",median_width_lnS,Median width of \ln S,hinge_class,1.55
+"Table III: known truth (kappa = 10, P = 1 bar)",median_width_lnS,Median width of \ln S,langmuir_class_all,0.70
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CH4 (0.50),pairs,699
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CH4 (0.50),ensemble_spread_lnS,0.33
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CH4 (0.50),resampling_spread_lnS,0.76
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CH4 (0.50),dual_site_set_width_lnS,1.12
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CH4 (0.50),spearman_spread_vs_fit_rmse,0.21
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CH4 (0.50),hinge_certified_width_lnS,2.24
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CH4 (0.50),langmuir_certified_width_lnS,1.30
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CH4 (0.50),hinge_certified_YES/NO_percent_at_2x,52/18
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CH4 (0.50),langmuir_certified_YES/NO_percent_at_2x,64/49
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/N2 (0.15),pairs,355
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/N2 (0.15),ensemble_spread_lnS,0.45
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/N2 (0.15),resampling_spread_lnS,1.04
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/N2 (0.15),dual_site_set_width_lnS,1.53
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/N2 (0.15),spearman_spread_vs_fit_rmse,0.24
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/N2 (0.15),hinge_certified_width_lnS,3.28
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/N2 (0.15),langmuir_certified_width_lnS,1.72
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/N2 (0.15),hinge_certified_YES/NO_percent_at_2x,57/9
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/N2 (0.15),langmuir_certified_YES/NO_percent_at_2x,66/29
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CH4/N2 (0.50),pairs,314
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CH4/N2 (0.50),ensemble_spread_lnS,0.33
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CH4/N2 (0.50),resampling_spread_lnS,0.85
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CH4/N2 (0.50),dual_site_set_width_lnS,1.16
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CH4/N2 (0.50),spearman_spread_vs_fit_rmse,0.16
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CH4/N2 (0.50),hinge_certified_width_lnS,2.01
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CH4/N2 (0.50),langmuir_certified_width_lnS,1.22
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CH4/N2 (0.50),hinge_certified_YES/NO_percent_at_2x,48/25
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CH4/N2 (0.50),langmuir_certified_YES/NO_percent_at_2x,58/51
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H4/C2H6 (0.50),pairs,138
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H4/C2H6 (0.50),ensemble_spread_lnS,0.11
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H4/C2H6 (0.50),resampling_spread_lnS,0.31
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H4/C2H6 (0.50),dual_site_set_width_lnS,0.57
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H4/C2H6 (0.50),spearman_spread_vs_fit_rmse,-0.13
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H4/C2H6 (0.50),hinge_certified_width_lnS,1.06
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H4/C2H6 (0.50),langmuir_certified_width_lnS,0.73
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H4/C2H6 (0.50),hinge_certified_YES/NO_percent_at_2x,61/59
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H4/C2H6 (0.50),langmuir_certified_YES/NO_percent_at_2x,75/75
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H6/CH4 (0.50),pairs,79
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H6/CH4 (0.50),ensemble_spread_lnS,0.32
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H6/CH4 (0.50),resampling_spread_lnS,0.61
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H6/CH4 (0.50),dual_site_set_width_lnS,1.14
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H6/CH4 (0.50),spearman_spread_vs_fit_rmse,0.19
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H6/CH4 (0.50),hinge_certified_width_lnS,3.34
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H6/CH4 (0.50),langmuir_certified_width_lnS,1.25
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H6/CH4 (0.50),hinge_certified_YES/NO_percent_at_2x,58/19
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C2H6/CH4 (0.50),langmuir_certified_YES/NO_percent_at_2x,75/48
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,O2/N2 (0.21),pairs,74
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,O2/N2 (0.21),ensemble_spread_lnS,0.19
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,O2/N2 (0.21),resampling_spread_lnS,0.44
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,O2/N2 (0.21),dual_site_set_width_lnS,0.74
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,O2/N2 (0.21),spearman_spread_vs_fit_rmse,0.22
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,O2/N2 (0.21),hinge_certified_width_lnS,1.33
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,O2/N2 (0.21),langmuir_certified_width_lnS,0.80
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,O2/N2 (0.21),hinge_certified_YES/NO_percent_at_2x,53/61
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,O2/N2 (0.21),langmuir_certified_YES/NO_percent_at_2x,76/68
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CO (0.50),pairs,59
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CO (0.50),ensemble_spread_lnS,0.40
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CO (0.50),resampling_spread_lnS,0.48
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CO (0.50),dual_site_set_width_lnS,1.37
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CO (0.50),spearman_spread_vs_fit_rmse,0.09
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CO (0.50),hinge_certified_width_lnS,2.97
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CO (0.50),langmuir_certified_width_lnS,1.48
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CO (0.50),hinge_certified_YES/NO_percent_at_2x,47/17
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/CO (0.50),langmuir_certified_YES/NO_percent_at_2x,54/51
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C3H6/C3H8 (0.50),pairs,58
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C3H6/C3H8 (0.50),ensemble_spread_lnS,0.24
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C3H6/C3H8 (0.50),resampling_spread_lnS,0.27
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C3H6/C3H8 (0.50),dual_site_set_width_lnS,0.90
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C3H6/C3H8 (0.50),spearman_spread_vs_fit_rmse,-0.22
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C3H6/C3H8 (0.50),hinge_certified_width_lnS,2.04
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C3H6/C3H8 (0.50),langmuir_certified_width_lnS,1.36
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C3H6/C3H8 (0.50),hinge_certified_YES/NO_percent_at_2x,36/29
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C3H6/C3H8 (0.50),langmuir_certified_YES/NO_percent_at_2x,66/50
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/C2H4 (0.50),pairs,51
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/C2H4 (0.50),ensemble_spread_lnS,0.09
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/C2H4 (0.50),resampling_spread_lnS,0.26
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/C2H4 (0.50),dual_site_set_width_lnS,0.53
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/C2H4 (0.50),spearman_spread_vs_fit_rmse,0.37
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/C2H4 (0.50),hinge_certified_width_lnS,1.00
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/C2H4 (0.50),langmuir_certified_width_lnS,0.61
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/C2H4 (0.50),hinge_certified_YES/NO_percent_at_2x,88/61
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/C2H4 (0.50),langmuir_certified_YES/NO_percent_at_2x,96/88
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/CO2 (0.50),pairs,47
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/CO2 (0.50),ensemble_spread_lnS,0.15
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/CO2 (0.50),resampling_spread_lnS,0.37
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/CO2 (0.50),dual_site_set_width_lnS,0.47
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/CO2 (0.50),spearman_spread_vs_fit_rmse,0.42
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/CO2 (0.50),hinge_certified_width_lnS,0.91
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/CO2 (0.50),langmuir_certified_width_lnS,0.51
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/CO2 (0.50),hinge_certified_YES/NO_percent_at_2x,96/57
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,C_2H2/CO2 (0.50),langmuir_certified_YES/NO_percent_at_2x,96/94
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/H2 (0.20),pairs,34
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/H2 (0.20),ensemble_spread_lnS,0.61
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/H2 (0.20),resampling_spread_lnS,0.83
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/H2 (0.20),dual_site_set_width_lnS,2.32
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/H2 (0.20),spearman_spread_vs_fit_rmse,0.27
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/H2 (0.20),hinge_certified_width_lnS,3.79
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/H2 (0.20),langmuir_certified_width_lnS,2.37
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/H2 (0.20),hinge_certified_YES/NO_percent_at_2x,15/24
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,CO2/H2 (0.20),langmuir_certified_YES/NO_percent_at_2x,29/26
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,Xe/Kr (0.20),pairs,22
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,Xe/Kr (0.20),ensemble_spread_lnS,0.13
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,Xe/Kr (0.20),resampling_spread_lnS,0.82
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,Xe/Kr (0.20),dual_site_set_width_lnS,0.78
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,Xe/Kr (0.20),spearman_spread_vs_fit_rmse,-0.16
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,Xe/Kr (0.20),hinge_certified_width_lnS,1.74
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,Xe/Kr (0.20),langmuir_certified_width_lnS,0.81
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,Xe/Kr (0.20),hinge_certified_YES/NO_percent_at_2x,55/36
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,Xe/Kr (0.20),langmuir_certified_YES/NO_percent_at_2x,73/77
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,All pairs,pairs,1930
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,All pairs,ensemble_spread_lnS,0.30
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,All pairs,resampling_spread_lnS,0.72
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,All pairs,dual_site_set_width_lnS,1.10
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,All pairs,spearman_spread_vs_fit_rmse,0.21
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,All pairs,hinge_certified_width_lnS,2.24
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,All pairs,langmuir_certified_width_lnS,1.25
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,All pairs,hinge_certified_YES/NO_percent_at_2x,54/25
+"Table IV: real pairs (P = 1 bar, kappa = 10)",median,All pairs,langmuir_certified_YES/NO_percent_at_2x,66/50

@@ -1,0 +1,25 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:05.300
+A screening question: which adsorbents reach a CO₂/N₂ selectivity of 50 at 1 bar, 15% CO₂?
+
+00:00:05.300 --> 00:00:11.100
+Each row is a real pair of records. 19 of 90 certainly meet the target; 38 cannot be decided.
+
+00:00:11.100 --> 00:00:16.400
+A best-fit screen would shortlist 33 materials. 14 of them are not certain.
+
+00:00:16.400 --> 00:00:21.900
+Inspect one. Every fitted model says yes, yet isotherms consistent with the same tables fall below 50.
+
+00:00:21.900 --> 00:00:27.200
+The reason: IAST reads the N₂ record far beyond its last measured point (dashed lines).
+
+00:00:27.200 --> 00:00:34.000
+These 19 answers hold for every isotherm consistent with the data.
+
+00:00:34.000 --> 00:00:39.800
+Loosen the Henry cap 100-fold: the answers that remain do not depend on it.
+
+00:00:39.800 --> 00:00:43.800
+Export the certain answers together with the query conditions.

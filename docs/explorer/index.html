@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Zijia Wang, Haoliang Hong, Xuhui Li, Jingyang Bai, Binjian Nie" />
+  <meta name="description" content="Ask a mixture-screening question of real tabulated isotherms: see what the tables certify, what they cannot, and which measurement would settle it." />
+  <title>Isotherm certifier · What Do Tabulated Isotherms Certify?</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="explorer.css?v=20261109-1" />
+  <script type="module" src="explorer.mjs?v=20261109-1"></script>
+</head>
+<body>
+  <a class="skip-link" href="#workbench">Skip to workbench</a>
+  <header>
+    <a href="../">← Project page</a>
+    <span>What Do Tabulated Isotherms Certify?</span>
+    <a href="https://github.com/OliverDOU776/What-Do-Tabulated-Isotherms-Certify-">Code ↗</a>
+  </header>
+  <main id="workbench">
+    <div class="mast">
+      <div><p class="eyebrow">Interactive research companion</p><h1>Isotherm certifier</h1><p class="intro">Ask a screening question. See what the measured tables certify, what they cannot, and which measurement would settle it.</p></div>
+      <svg class="molecules" viewBox="0 0 180 70" role="img" aria-label="Illustrative carbon dioxide and nitrogen molecules"><g stroke="#bcc7cd" stroke-width="3"><path d="M22 24H76M112 24H157M112 30H157M112 18H157"/></g><g stroke="#fff" stroke-width="2"><circle cx="22" cy="24" r="11" fill="#c36464"/><circle cx="49" cy="24" r="10" fill="#465462"/><circle cx="76" cy="24" r="11" fill="#c36464"/><circle cx="114" cy="24" r="11" fill="#557aab"/><circle cx="155" cy="24" r="11" fill="#557aab"/></g><g fill="#6b7781" font-family="Arial,sans-serif" font-size="11" text-anchor="middle"><text x="49" y="57">CO₂</text><text x="134" y="57">N₂</text></g></svg>
+    </div>
+    <nav aria-label="Analysis view"><a href="#screen">Screen materials</a><a href="#extrapolate">Trust an extrapolation</a><a href="#measure">Plan a measurement</a></nav>
+    <p id="load" role="status">Loading records and compiled envelope tables…</p>
+
+    <section id="screen" hidden aria-labelledby="screen-heading">
+      <div class="task-heading"><div><h2 id="screen-heading">Which adsorbents certainly meet the selectivity target?</h2><p>Choose a mixture, an operating condition and a target. Every row is a real pair of pure-gas records; the answer holds for every isotherm consistent with both tables.</p></div><span class="dataset-tag" id="screen-tag"></span></div>
+      <form id="query" class="strip">
+        <label>Mixture<select name="mix" aria-label="Mixture"><option value="co2-n2">CO₂ / N₂</option><option value="co2-ch4">CO₂ / CH₄</option><option value="c2h4-c2h6">C₂H₄ / C₂H₆</option></select></label>
+        <label>Total pressure <i>P</i> (bar)<input name="pressure" aria-label="Total pressure P in bar" type="number" step="any" min=".01" max="100" required value="1" /></label>
+        <label><span id="feed-label">CO₂</span> gas fraction <i>y</i><input name="feed" aria-label="Gas-phase mole fraction of the first gas" type="number" step="any" min=".01" max=".99" required value=".15" /></label>
+        <label>Target selectivity <i>S</i> ≥<input name="tau" aria-label="Target selectivity" type="number" step="any" min=".01" max="100000" required value="50" /></label>
+        <label>Henry cap<select name="cap" aria-label="Henry cap multiplier"><option value="10">10 × minimum</option><option value="100">100 × minimum</option><option value="1000">1000 × minimum</option></select></label>
+        <button type="submit">Run query</button>
+      </form>
+      <div class="query-summary" id="screen-summary" role="status" aria-live="polite"></div>
+      <div class="workspace">
+        <article>
+          <div class="article-heading"><h3>Certain answers</h3><button id="export" class="secondary" type="button" disabled>Export CSV ↓</button></div>
+          <p class="meta" id="screen-meta"></p>
+          <div class="filters" id="filters" role="group" aria-label="Filter by answer"></div>
+          <div class="scroll"><table class="results"><thead><tr><th scope="col">Adsorbent</th><th scope="col">Best fit <i>S</i></th><th scope="col">Certified <i>S</i>⁻ – <i>S</i>⁺</th><th scope="col">Answer</th></tr></thead><tbody id="rows"></tbody></table></div>
+          <p id="export-status" class="foot" role="status"></p>
+        </article>
+        <article class="plot">
+          <div class="article-heading"><h3 id="pair-title">Select a material</h3><span class="hint">Select a row to inspect</span></div>
+          <p id="pair-meta" class="meta"></p>
+          <div id="pair-strip"></div>
+          <div id="pair-curves"></div>
+          <div class="legend"><span><i class="pt" style="background:#30363d"></i>measured points</span><span><i class="band" style="background:#7fb0d8"></i>certified loading band</span><span><i style="border-color:#c0564b"></i>fits within tolerance</span><span><i style="border-color:#e2a03f;border-top-style:dashed"></i>pressures where IAST reads the record</span></div>
+        </article>
+      </div>
+      <div class="value-note" id="screen-value"></div>
+      <p class="source"><strong>Data &amp; scope.</strong> Records come from the NIST/ARPA-E adsorption database (ISODB); each pair shares adsorbent, publication and temperature. Your browser evaluates the paper's online stage: lookups in envelope tables compiled offline by the Python package, and binary IAST on those tables. Answers are relative to IAST, the Langmuir-site class, the record's tolerance and the chosen Henry cap; they are not predictions for real mixtures. “Best fit” is the lowest-RMSE of six parametric families per record. <a href="data/reference.json">Reference values from the Python engine</a>.</p>
+    </section>
+
+    <section id="extrapolate" hidden aria-labelledby="extra-heading">
+      <div class="task-heading"><div><h2 id="extra-heading">How far can this isotherm be trusted beyond its last point?</h2><p>Only the low-pressure tenth of a real record is shown to the methods. Compare what well-fitting models and the certified band say about higher pressures, then reveal what was actually measured.</p></div><span class="dataset-tag">24 real records · upper 90% hidden</span></div>
+      <div class="strip">
+        <label>Record<select id="ex-record" aria-label="Record"></select></label>
+        <label class="check"><input type="checkbox" id="ex-fits" checked /> Model fits</label>
+        <label class="check"><input type="checkbox" id="ex-hinge" /> Shape-only band</label>
+        <button type="submit" id="ex-reveal">Reveal hidden measurements</button>
+      </div>
+      <div class="workspace">
+        <article><h3>What the visible window supports</h3><p class="meta" id="ex-meta"></p><dl class="facts" id="ex-facts"></dl><p class="decision" id="ex-verdict" aria-live="polite"></p></article>
+        <article class="plot"><h3 id="ex-title">Loading versus pressure</h3><p class="meta">Logarithmic pressure axis · loading in mmol/g</p><div id="ex-plot"></div>
+          <div class="legend"><span><i class="pt" style="background:#30363d"></i>visible points</span><span><i class="pt" style="background:#fff;border:1.5px solid #30363d"></i>hidden points</span><span><i class="band" style="background:#7fb0d8"></i>certified band</span><span><i style="border-color:#c0564b"></i>fits within tolerance</span><span><i style="border-color:#d9a79f"></i>other fits</span></div></article>
+      </div>
+      <div class="value-note"><strong>Why this matters.</strong> Mixture models read a pure-gas isotherm far outside its measured window. A fit that matches the window says little about that region; the certified band states the range that the window can support.</div>
+      <p class="source"><strong>Data &amp; scope.</strong> Records are a random sample of the paper's held-out test set (records measured up to at most 10 bar). Bands and fits were computed from the visible points only. A hidden point counts as covered when it lies inside the band widened by the record's tolerance. In the paper, the Langmuir-site band covers 97.0% of 12,402 hidden points; coverage drops above 10 bar.</p>
+    </section>
+
+    <section id="measure" hidden aria-labelledby="measure-heading">
+      <div class="task-heading"><div><h2 id="measure-heading">The answer is undetermined. Which measurement would settle it?</h2><p>Both records are cut at 1 bar. Read the advice, then add the real measurements that exist above 1 bar and watch the certified interval respond.</p></div><span class="dataset-tag">11 real pairs · points above 1 bar held back</span></div>
+      <div class="strip">
+        <label>Material<select id="me-pair" aria-label="Material"></select></label>
+        <label>Target selectivity <i>S</i> ≥<input id="me-tau" aria-label="Target selectivity" type="number" step="any" min=".01" max="100000" value="50" /></label>
+        <label><span id="me-la">Gas A</span> measured up to<div class="range-control"><input id="me-a" aria-label="Extent of the first gas record" type="range" min="0" max="5" step="1" value="0" /><output for="me-a" id="me-a-out"></output></div></label>
+        <label><span id="me-lb">Gas B</span> measured up to<div class="range-control"><input id="me-b" aria-label="Extent of the second gas record" type="range" min="0" max="5" step="1" value="0" /><output for="me-b" id="me-b-out"></output></div></label>
+      </div>
+      <div class="workspace">
+        <article><h3>Certain answer with the current data</h3><p class="meta" id="me-meta"></p><p class="answer-line" id="me-answer" aria-live="polite"></p>
+          <p class="sub">Advice from the data up to 1 bar</p><p class="meta">One-step lookahead: predicted interval if one point were added at the middle of the current band.</p><ol class="advice" id="me-advice"></ol><div id="me-advice-plot"></div></article>
+        <article class="plot"><h3>What the added measurements change</h3><p class="meta" id="me-plot-meta"></p><div id="me-strip"></div><div id="me-curves"></div>
+          <div class="legend"><span><i class="pt" style="background:#30363d"></i>points in use</span><span><i class="pt" style="background:#fff;border:1.5px solid #9aa5ae"></i>held back</span><span><i class="band" style="background:#7fb0d8"></i>certified band</span><span><i style="border-color:#e2a03f;border-top-style:dashed"></i>pressures where IAST reads the record</span></div></article>
+      </div>
+      <div class="value-note" id="me-value" aria-live="polite"></div>
+      <p class="source"><strong>Data &amp; scope.</strong> Real ISODB pairs measured to 5–40 bar; the explorer withholds the points above 1 bar and returns them as you move the sliders. After each extension the record is re-admitted and compiled with the standard protocol, so the interval is not forced to shrink. The advice is the paper's one-step lookahead heuristic at 1 bar; it is not an optimal experimental design. Certified intervals are relative to IAST, the class, the tolerance and the Henry cap.</p>
+    </section>
+    <footer>Zijia Wang, Haoliang Hong, Xuhui Li, Jingyang Bai, Binjian Nie · Research implementation · <a href="../assets/paper.pdf">Read the paper</a></footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "isocert"
+version = "0.1.0"
+description = "Certain answers to mixture-adsorption screening queries over tabulated pure-gas isotherms"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "Zijia Wang"}, {name = "Haoliang Hong"}, {name = "Xuhui Li"}, {name = "Jingyang Bai"}, {name = "Binjian Nie"}]
+dependencies = ["numpy>=1.24", "scipy>=1.11"]
+classifiers = ["Programming Language :: Python :: 3", "Topic :: Scientific/Engineering"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+demo = ["matplotlib>=3.7", "Pillow>=10", "playwright>=1.40"]
+
+[project.urls]
+Repository = "https://github.com/OliverDOU776/What-Do-Tabulated-Isotherms-Certify-"
+Project = "https://oliverdou776.github.io/What-Do-Tabulated-Isotherms-Certify-/"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::RuntimeWarning", "ignore::DeprecationWarning"]

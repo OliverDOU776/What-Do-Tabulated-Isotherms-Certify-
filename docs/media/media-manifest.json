@@ -1,0 +1,115 @@
+{
+  "authors": "Zijia Wang, Haoliang Hong, Xuhui Li, Jingyang Bai, Binjian Nie",
+  "source": "Actual browser captures of docs/explorer/",
+  "description": "Edited screen captures of real UI interactions, with caption and recorded click-target cursor overlays. Playback duration is not execution time.",
+  "demos": [
+    {
+      "name": "screen-materials",
+      "duration_seconds": 43.833333,
+      "encoding": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1200,
+            "height": 1182,
+            "pix_fmt": "yuv420p"
+          }
+        ],
+        "format": {
+          "duration": "43.833333"
+        }
+      },
+      "files": {
+        "screen-materials.mp4": {
+          "bytes": 816758,
+          "sha256": "4858cf74ca50b96a2da167ea2203f5608377cdcc12095d787801ca97640ec58b"
+        },
+        "screen-materials.gif": {
+          "bytes": 625129,
+          "sha256": "ade4c7bb8a7d80d4ae8bf530bc1e1a7e196b827dec20fdd372776802b56f55de"
+        },
+        "screen-materials.vtt": {
+          "bytes": 921,
+          "sha256": "bf1faa220be7cc411f5f91eccc91e63da812b498daba56800b229991b61a747c"
+        },
+        "screen-materials-poster.png": {
+          "bytes": 188240,
+          "sha256": "43d6ae4e1f8d135d5bc37a6890ed1dd5be03a9fc0f29e4b0b9459a1e4a0bd0ac"
+        }
+      }
+    },
+    {
+      "name": "trust-extrapolation",
+      "duration_seconds": 32.0,
+      "encoding": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1200,
+            "height": 1182,
+            "pix_fmt": "yuv420p"
+          }
+        ],
+        "format": {
+          "duration": "32.000000"
+        }
+      },
+      "files": {
+        "trust-extrapolation.mp4": {
+          "bytes": 604403,
+          "sha256": "7e55bafb0cc19d2786cca2e255b74eb14f39974f01628d8df6249dd597130480"
+        },
+        "trust-extrapolation.gif": {
+          "bytes": 543683,
+          "sha256": "604909e1ab0921620339c9da52486b5f9441183f8a413ed2d2add7e9cf9946a9"
+        },
+        "trust-extrapolation.vtt": {
+          "bytes": 673,
+          "sha256": "df86adf5e6bc2979596e32a6b5c0fcd124f66c4efdcb6b692f74b5dfb2c395ac"
+        },
+        "trust-extrapolation-poster.png": {
+          "bytes": 151294,
+          "sha256": "96cf0803eaae495c781e01a6c661b8bb45b299fb4aca947447c84e676826e8c3"
+        }
+      }
+    },
+    {
+      "name": "plan-measurement",
+      "duration_seconds": 34.833333,
+      "encoding": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1200,
+            "height": 1182,
+            "pix_fmt": "yuv420p"
+          }
+        ],
+        "format": {
+          "duration": "34.833333"
+        }
+      },
+      "files": {
+        "plan-measurement.mp4": {
+          "bytes": 598593,
+          "sha256": "7644901b5a541cccc73a8ada8ded2af7fe14778c58bf077d4f88f63f1c8f1118"
+        },
+        "plan-measurement.gif": {
+          "bytes": 580393,
+          "sha256": "d244e7f9cd1db1867578d9edb590ddfb8f97aeec32dee8d3d8f9d0432d9c5330"
+        },
+        "plan-measurement.vtt": {
+          "bytes": 691,
+          "sha256": "7bf8684a62b6bd6196e2803ac0bdb15e3887156c7d53ad7e62b5618a0cdf2059"
+        },
+        "plan-measurement-poster.png": {
+          "bytes": 151171,
+          "sha256": "437524382edaa9d2e08a25a54a126844380a88737575b28a7ec0bbc81cb41672"
+        }
+      }
+    }
+  ]
+}
