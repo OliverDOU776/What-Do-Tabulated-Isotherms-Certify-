@@ -34,7 +34,7 @@ Take CO₂ and N₂ on zeolite 13X at 298 K, both measured up to 1 bar ([source 
 
 ![The same example in data: N2 isotherm on zeolite 13X measured to 1 bar with six fits and the certified band; fitted models give selectivities of 217 to 2,018, the tables certify 178 to 15,497, and after adding N2 points to 10 bar the interval is 421 to 2,810](docs/assets/opening-example.png)
 
-Across 13,183 isotherms from NIST ISODB, certified bands computed from the low-pressure tenth of a record cover **97.0%** of 12,402 held-out measurements; the best-fit model stays within tolerance on 19.6%, and on 6.9% at 5–10× extrapolation. The guarantee is relative to IAST, an isotherm class, a tolerance and a Henry cap, and the paper reports where it stops holding.
+On 607 NIST ISODB records measured up to 10 bar, certified bands computed from a low-pressure prefix of each record cover **97.0%** of 12,402 held-out measurements and 96.5% at 5–10× extrapolation, where the best-fit model falls within ±3% of only 6.9%. Across 1,930 real gas pairs, at targets a factor 2 below or above the best-fit selectivity, the tables certify 66% of pairs as YES and 50% as NO, and lookahead advice settles 68% of undetermined pairs in a median of 2 added measurements. The guarantee is relative to IAST, an isotherm class, a tolerance and a Henry cap, and the paper reports where it stops holding.
 
 ## See how to use it
 
@@ -61,39 +61,43 @@ The workbench evaluates the paper's online stage in the browser: lookups in enve
 
 A fit replaces a table by one curve. IsoCert keeps every curve the table allows.
 
-A record with points (pᵢ, qᵢ) defines a class of site mixtures q(p) = ∫ φ_b(p) dν(b), with a nonnegative site measure ν, pointwise tolerances |q(pᵢ) − qᵢ| ≤ eᵢ and a cap H on the Henry constant. Langmuir sites give a class that contains multi-site Langmuir, UNILAN and Tóth isotherms; hinge sites give all concave nondecreasing isotherms. The spreading pressure is linear in ν, so its upper and lower envelopes U(r), L(r) over the class are linear programs. The IAST root is monotone in the two spreading pressures, hence the extreme selectivities over both classes are
+A record with points (pᵢ, qᵢ), tolerance eᵢ = ε·maxⱼ qⱼ and Henry slope cap H = κ·K_min defines a cone of site mixtures q(p) = c₀p + ∫ φ_b(p) dμ(b), with c₀ ≥ 0, a nonnegative site measure μ, data boxes qᵢ − eᵢ ≤ q(pᵢ) ≤ qᵢ + eᵢ and q′(0) ≤ H. Langmuir sites φ_b(p) = p/(1 + bp) give the Langmuir-site Stieltjes class C_L, which contains single- and multi-site Langmuir, Tóth and UNILAN isotherms with finite Henry constants; hinge sites min(p, 1/b) give the shape-only class C_h of all nonnegative, nondecreasing, concave isotherms. The dual-site Langmuir set C₂ ⊆ C_L ⊂ C_h brackets them from inside. The spreading pressure is linear in the site measure, so its upper and lower envelopes U(r), L(r) over a class are linear semi-infinite programs. The **Envelope Reduction Theorem** uses the monotonicity of the IAST root in the two spreading pressures: the exact selectivity interval over both classes is
 
 **S⁺ = IAST(U_A, L_B),  S⁻ = IAST(L_A, U_B),**
 
-and the interval [S⁻, S⁺] is sharp. A threshold query S ≥ τ is YES if S⁻ ≥ τ, NO if S⁺ < τ, and UNDETERMINED otherwise.
+both ends are attained, and each envelope value is attained by an isotherm with at most n + 2 sites. A threshold query S ≥ τ is YES if S⁻ ≥ τ, NO if S⁺ < τ, and UNDETERMINED otherwise; it is decided from four envelope values.
 
-Two laws bound what a table can certify. For a Henry-like table with tolerance ε, certification beyond the last pressure ends at a horizon of order P_max/ε, for any number of interior points. Under tolerance slack, the upper envelope grows logarithmically with the Henry cap, so a cap is required; each decision reports the largest cap at which it still holds.
+Two laws bound what a table can certify. **Extrapolation-Horizon Law:** relative uncertainty stays of order ε inside the measured window but becomes of order one at the extrapolation ratio ρ = r/P_max ∼ (1 + 1/c)/ε = Θ(1/ε), where c is the saturation degree of a Langmuir isotherm at P_max. **Log-Henry Law:** below the lowest measured pressure p₁, the spreading-pressure width grows as Θ(q₁⁻ ln H), so an explicit Henry cap is necessary; each decision reports its critical Henry cap κ⋆, the largest multiplier under which it still holds.
 
-The engine solves each envelope by column generation with a dual certificate that is valid for every site affinity, compiles a record once into outer-bound tables, and answers a threshold query from four table lookups. For an undetermined query, a one-step lookahead ranks candidate measurements by the interval width they are predicted to leave.
+Offline, IsoCert admits a record when its misfit floor ε⋆, the optimum of a linear program, is at most 3%, solves each envelope by column generation with a dual certificate that is valid for every site affinity, and compiles the record once into monotone outer-bound tables. Online, it answers a threshold query from four table lookups and an interval query by a scalar root solve on the tables. For an undetermined query, a one-step lookahead ranks candidate measurements by the interval width they are predicted to leave.
 
 ## Experimental results
 
-**Held-out extrapolation on real records.** Methods see points up to one tenth of the maximum pressure. Coverage (%) of the hidden points and median band ratio q_hi/q_lo, by extrapolation ratio ρ beyond the visible window.
+**Admission.** The misfit-floor LP admits 68.5% of the 13,183 ISODB isotherms (9,033 records, 14 gases) into the Langmuir-site class at ε⋆ ≤ 3%, with a median misfit floor of 1.54%.
+
+**Held-out extrapolation on real records.** Methods see only a low-pressure prefix of each record, up to a cut-off pressure P_cut. Coverage (%) of the hidden points and median band ratio q_hi/q_lo, by extrapolation ratio ρ = p/P_cut.
 
 | Method | ρ ∈ (1, 2] | ρ ∈ (2, 5] | ρ ∈ (5, 10] | all ρ ∈ (1, 10] | band ratio (all) |
 |---|---:|---:|---:|---:|---:|
-| Best-fit model (point) | 62.3 | 19.5 | 6.9 | 19.6 | – |
+| Best-fit model (point) | 62.3 | 19.5 | 6.9 | 19.6 | 1.00 |
 | Six-family ensemble | 80.1 | 61.6 | 58.8 | 63.0 | 1.24 |
 | Dual-site parameter set | 97.4 | 95.6 | 94.5 | 95.3 | 2.43 |
 | Hinge class (shape only) | 99.0 | 98.6 | 99.1 | 98.9 | 4.29 |
 | **Langmuir-site class (ours)** | **98.3** | **97.3** | **96.5** | **97.0** | **2.51** |
 
-607 test records with P_max ≤ 10 bar, 12,402 hidden points; the tolerance multiplier was calibrated on a disjoint split. A point counts as covered inside the band widened by the record's tolerance.
+607 Type-I records with P_max ≤ 10 bar, 12,402 hidden points. A point counts as covered inside the band widened by the record's tolerance, ε = 3% of the maximum loading; across 412 groups of replicate measurements (1,184 curves), the median inter-replicate discrepancy is 1.42% of the maximum loading and this tolerance covers 97.1% of repeat curves. At 5–10× extrapolation the Langmuir-site band is 1.9× tighter than the shape-only band (median ratio 3.68 against 6.85).
 
-**Real pairs.** Across 1,930 pairs and 12 gas combinations, the certified interval of ln S has median width 1.25 (a factor of 3.5). A six-family ensemble spans 26% of that width, and its spread correlates with fit error at 0.21 (Spearman). The set of all dual-site Langmuir parameters within tolerance spans a median 96%: the ambiguity is already present in ordinary two-site models, and point fitting hides it.
+**Real pairs.** Across 1,930 pairs and 12 gas separations, the certified interval of ln S has median width 1.25 (a factor of 3.5). A six-family ensemble spans 26% of that width, and its spread correlates with fit error at 0.21 (Spearman); residual-bootstrap intervals lie strictly inside the certified interval on 51% of pairs. The set of all dual-site Langmuir parameters within tolerance spans a median 96%: the ambiguity is already present in ordinary two-site models, and point fitting hides it. At thresholds a factor 2 below and above the best-fit selectivity, IsoCert certifies 66% of pairs as YES and 50% as NO.
 
-**Known truth.** On 990 synthetic instances, the interval contains the true selectivity in all 670 that respect the Henry cap, with 0 wrong among 1,592 certified decisions.
+**Known truth.** On 990 synthetic instances, the interval contains the true selectivity in all 670 that respect the Henry cap, with 0 false decisions among 1,592 certified threshold answers.
 
-**Cost.** Compiling a pair takes a median of 9.9 s. Afterwards an interval query takes 0.15 ms (8118× faster than direct evaluation) and a threshold query 25 µs.
+**Measurement advice.** On 100 undetermined pairs, one-step lookahead reaches the target precision for 68% in a median of 2 added measurements and cuts the median width by 94%; adding points inside the measured window reaches it for 7%.
 
-**Where the guarantee ends.** Answers are relative to IAST, the class, the tolerance and the cap. On 2,512 measured binary mixture points from 109 publications, the certified interval contains the measured selectivity for 60% (75% at a 100× looser cap; a fit ensemble: 24%). For records measured above 10 bar, held-out coverage drops to 84.2%. When the true Henry constant violates the cap, 4.8% of certified decisions fail. The dual-site parameter set is only 4% narrower than the certified interval; what the certified class adds is the outer guarantee. Closed-form measurement rules reach the target on 42% of acquisition instances against 68% for lookahead.
+**Cost.** Compiling a pair of records takes 9.9 s and pays off after 8 queries. Afterwards an interval query takes 0.15 ms (8118× faster than direct LP evaluation at 1235 ms) and a threshold query 25 µs (2437× faster).
 
-[All three result tables](evidence/published_results.csv) · [Every number quoted in the paper](evidence/published_results.json) · [Full paper](docs/assets/paper.pdf)
+**Where the guarantee ends.** Answers are relative to IAST, the class, the tolerance and the cap. On all 272 binary mixture series in ISODB (2,512 measured points), the certified interval contains the measured selectivity for 60% at κ = 10 (75% at κ = 1000; a fit ensemble: 24%). For records measured above 10 bar, held-out coverage drops to 84.2%. Over all 990 synthetic instances, including those whose Henry constant violates the cap, coverage is 95.1% and 1.8% of calls at a 1.25× margin (1.3% at 2×) are false. The dual-site parameter set reaches a median 96% of the certified width; what the certified class adds is the outer guarantee. The measurement advice is a myopic one-step heuristic, not an optimal experimental design.
+
+[Result tables II–IV](evidence/published_results.csv) · [Numbers quoted in the paper](evidence/published_results.json) · [Full paper](docs/assets/paper.pdf)
 
 ## Installation
 
@@ -123,7 +127,7 @@ print(critical_cap(co2, n2, P=1.0, y=0.15, tau=50))      # largest Henry-cap mul
 print(next_measurement(co2, n2, P=1.0, y=0.15, top=3))   # which gas, which pressure
 ```
 
-`Record` computes the misfit floor of the table, admits it if the floor is at most 3% of full scale (`record.admitted`), and sets the tolerance and Henry cap by the paper's protocol; `eps`, `kappa`, `H` and `kernel='hinge'` override them. Any consistent pressure and loading units work. `record.band(pressures)` returns the certified loading band.
+`Record` computes the misfit floor of the table and admits it if the floor is at most 3% of full scale (`record.admitted`). By default it sets the tolerance to max(3 × misfit floor, 1%) of full scale and the Henry cap to κ = 10 times the smallest Henry constant consistent with the table; `eps=0.03` gives the fixed 3% tolerance stated in the paper, and `eps`, `kappa`, `H` and `kernel='hinge'` override the defaults. Any consistent pressure and loading units work. `record.band(pressures)` returns the certified loading band.
 
 Compile once, then query by lookup; a compiled table is a small JSON file that needs no solver:
 

@@ -54,7 +54,7 @@ def test_interval_contains_true_selectivity_and_decisions_agree(pair):
 
 
 def test_extrapolation_horizon_witness():
-    """Theorem 3: for a Henry-like table the one-site witness bounds L from above, for any number of points."""
+    """Extrapolation horizon: for a Henry-like table a one-site witness bounds L from above, for any number of points."""
     K, Pmax, eps, a = 2.0, 1.0, 0.02, 0.0
     b_a = (a + eps) / ((1 - eps) * Pmax)
     for n in (6, 24):

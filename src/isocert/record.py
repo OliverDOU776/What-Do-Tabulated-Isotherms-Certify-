@@ -7,7 +7,7 @@ from .compiled import CompiledRecord
 from .iast import interval, decide, lnS_bounds
 
 EPS_FLOOR = 0.01      # tolerance floor: 1% of full scale
-EPS_MULT = 3.0        # tolerance = max(EPS_MULT * misfit floor, EPS_FLOOR); calibrated on held-out data in the paper
+EPS_MULT = 3.0        # default tolerance = max(EPS_MULT * misfit floor, EPS_FLOOR); pass eps=0.03 for the fixed 3% of the paper
 EPS_ADMIT = 0.03      # a record is admitted when its misfit floor is at most 3% of full scale
 MAX_POINTS = 40       # longer records are thinned to 40 points by index
 
